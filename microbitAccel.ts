@@ -87,21 +87,23 @@ namespace jacdac {
          * ```
          */
         // Forces = 0x101,
-        /*
+        
         public handleCustomCommand(packet: JDPacket) {
             if (packet.is_command && packet.service_command == AccelerometerReg.Forces) {
-                // pack up the accelerometer (x,y,z) and send them out
-                let ax = input.acceleration(Dimension.X);
-                let ay = input.acceleration(Dimension.Y);
-                let az = input.acceleration(Dimension.Z);
-                let buf = jdpack("u16 u16 u16", [ax, ay, az]);
-                // send back
+
             }
-        } */
-        // events???
-        // streaming???
+        }
+
+        public serializeState(): Buffer {
+            let ax = input.acceleration(Dimension.X);
+            let ay = input.acceleration(Dimension.Y);
+            let az = input.acceleration(Dimension.Z);
+            return jdpack("u16 u16 u16", [ax, ay, az]);
+        }
     }
 }
 
 const accel = new jacdac.microbitAccelerometer();
 accel.start();
+
+// events.
