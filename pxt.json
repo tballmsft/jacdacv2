@@ -10,7 +10,9 @@
     "files": [
         "main.blocks",
         "main.ts",
-        "README.md"
+        "README.md",
+        "accelClient.ts",
+        "microbitAccel.ts"
     ],
     "testFiles": [
         "test.ts"
