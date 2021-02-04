@@ -12,7 +12,9 @@
         "README.md",
         "microbitAccel.ts",
         "microbitButtons.ts",
-        "microbitSound.ts"
+        "microbitSound.ts",
+        "microbitScreen.ts",
+        "microbitLightLevel.ts"
     ],
     "testFiles": [
         "test.ts"

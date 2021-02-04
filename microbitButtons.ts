@@ -1,7 +1,7 @@
-namespace jacdac {
+namespace microbit {
     // Service: Button
-    export const SRV_BUTTON = 0x1473a263
-    export const enum ButtonReg {
+    const SRV_BUTTON = 0x1473a263
+    const enum ButtonReg {
         /**
          * Read-only bool (uint8_t). Indicates whether the button is currently active (pressed).
          *
@@ -11,7 +11,7 @@ namespace jacdac {
          */
         Pressed = 0x101,
     }
-    export const enum ButtonEvent {
+    const enum ButtonEvent {
         /**
          * Emitted when button goes from inactive (`pressed == 0`) to active.
          */
@@ -34,7 +34,7 @@ namespace jacdac {
         LongClick = 0x81,
     }
 
-    export class microbitButton extends jacdac.Host {
+    export class MButton extends jacdac.Host {
         constructor(dev: string, private button: Button) {
             super(dev, SRV_BUTTON);
             control.onEvent(button, EventBusValue.MICROBIT_EVT_ANY, 
@@ -46,7 +46,7 @@ namespace jacdac {
                     this.sendEvent(ButtonEvent.Up);
             })
         }
-        handlePacket(packet: JDPacket) {
+        handlePacket(packet: jacdac.JDPacket) {
             this.handleRegBool(packet, ButtonReg.Pressed, input.buttonIsPressed(this.button));
         }
     }

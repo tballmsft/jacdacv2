@@ -1,14 +1,16 @@
 function startAll() {
-    const accel = new jacdac.microbitAccelerometer();
-    let buttonA = new jacdac.microbitButton("buttonA", Button.A);
-    let buttonB = new jacdac.microbitButton("buttonB", Button.B);
-    let buttonAB = new jacdac.microbitButton("buttonAB", Button.AB);
-    let soundLevel = new jacdac.microbitSoundLevel();
+    const accel = new microbit.Accelerometer();
+    let buttonA = new microbit.MButton("buttonA", Button.A);
+    let buttonB = new microbit.MButton("buttonB", Button.B);
+    let buttonAB = new microbit.MButton("buttonAB", Button.AB);
+    let soundLevel = new microbit.SoundLevel();
+    let lightLevel = new microbit.LightLevel();
     accel.start();
     buttonA.start();
     buttonB.start();
     buttonAB.start();
     soundLevel.start();
+    lightLevel.start();
 }
 
 startAll();

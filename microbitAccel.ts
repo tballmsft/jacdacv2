@@ -1,7 +1,7 @@
-namespace jacdac {
+namespace microbit {
     // Service: Accelerometer
-    export const SRV_ACCELEROMETER = 0x1f140409
-    export const enum AccelerometerReg {
+    const SRV_ACCELEROMETER = 0x1f140409
+    const enum AccelerometerReg {
         /**
          * Indicates the current forces acting on accelerometer.
          *
@@ -11,7 +11,7 @@ namespace jacdac {
          */
         Forces = 0x101,
     }
-    export const enum AccelerometerEvent {
+    const enum AccelerometerEvent {
         /**
          * Emitted when accelerometer is tilted in the given direction.
          */
@@ -74,7 +74,7 @@ namespace jacdac {
         Force_8g = 0x8a,
     }
 
-    export class microbitAccelerometer extends jacdac.SensorHost {
+    export class Accelerometer extends jacdac.SensorHost {
         constructor() {
             super("microbitAccel", SRV_ACCELEROMETER)
         }
@@ -83,7 +83,7 @@ namespace jacdac {
             let ax = input.acceleration(Dimension.X);
             let ay = input.acceleration(Dimension.Y);
             let az = input.acceleration(Dimension.Z);
-            return jdpack("u16 u16 u16", [ax, ay, az]);
+            return jacdac.jdpack("u16 u16 u16", [ax, ay, az]);
         }
     }
 }

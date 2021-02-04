@@ -1,7 +1,7 @@
-namespace jacdac {
+namespace microbit {
     // Service: Sound level
-    export const SRV_SOUND_LEVEL = 0x14ad1a5d
-    export const enum SoundLevelReg {
+    const SRV_SOUND_LEVEL = 0x14ad1a5d
+    const enum SoundLevelReg {
         /**
          * Read-only ratio u0.16 (uint16_t). The sound level detected by the microphone
          *
@@ -27,7 +27,7 @@ namespace jacdac {
          */
         QuietThreshold = 0x6,
     }
-    export const enum SoundLevelEvent {
+    const enum SoundLevelEvent {
         /**
          * Raised when a loud sound is detected
          */
@@ -40,13 +40,13 @@ namespace jacdac {
         Quiet = 0x5,
     }
 
-    export class microbitSoundLevel extends jacdac.SensorHost {
+    export class SoundLevel extends jacdac.SensorHost {
         constructor() {
             super("microbitSound", SRV_SOUND_LEVEL)
         }
 
         public serializeState(): Buffer {
-            return jdpack("u0.16", [input.soundLevel()/255]);
+            return jacdac.jdpack("u0.16", [input.soundLevel()/255]);
         }
     }
 }
