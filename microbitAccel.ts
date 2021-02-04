@@ -79,21 +79,6 @@ namespace jacdac {
             super("microbitAccel", SRV_ACCELEROMETER)
         }
 
-        /**
-         * Indicates the current forces acting on accelerometer.
-         *
-         * ```
-         * const [x, y, z] = jdunpack<[number, number, number]>(buf, "i6.10 i6.10 i6.10")
-         * ```
-         */
-        // Forces = 0x101,
-        
-        public handleCustomCommand(packet: JDPacket) {
-            if (packet.is_command && packet.service_command == AccelerometerReg.Forces) {
-
-            }
-        }
-
         public serializeState(): Buffer {
             let ax = input.acceleration(Dimension.X);
             let ay = input.acceleration(Dimension.Y);
@@ -102,5 +87,3 @@ namespace jacdac {
         }
     }
 }
-
-// events.

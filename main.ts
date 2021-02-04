@@ -3,10 +3,11 @@ function startAll() {
     let buttonA = new jacdac.microbitButton("buttonA", Button.A);
     let buttonB = new jacdac.microbitButton("buttonB", Button.B);
     let buttonAB = new jacdac.microbitButton("buttonAB", Button.AB);
-    accel.start();
+    let soundLevel = new jacdac.microbitSoundLevel();
     buttonA.start();
     buttonB.start();
     buttonAB.start();
+    soundLevel.start();
 }
 
 startAll();

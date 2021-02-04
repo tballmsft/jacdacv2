@@ -11,7 +11,8 @@
         "main.ts",
         "README.md",
         "microbitAccel.ts",
-        "microbitButtons.ts"
+        "microbitButtons.ts",
+        "microbitSound.ts"
     ],
     "testFiles": [
         "test.ts"
