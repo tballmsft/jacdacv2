@@ -1,3 +1,11 @@
+// TODO:
+// - screen
+// - play sound
+// - cap touch (logo)
+// - temperature
+// - compass
+// - edge connector (cap touch)
+
 function startAll() {
     const accel = new microbit.Accelerometer();
     let buttonA = new microbit.MButton("buttonA", Button.A);
@@ -14,5 +22,3 @@ function startAll() {
 }
 
 startAll();
-
-// TODO: SCREEN, temperature, light detector, microphone, compass, ...
