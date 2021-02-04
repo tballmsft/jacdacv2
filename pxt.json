@@ -11,7 +11,8 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "microbitAccel.ts"
+        "microbitAccel.ts",
+        "microbitButtons.ts"
     ],
     "testFiles": [
         "test.ts"

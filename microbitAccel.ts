@@ -103,7 +103,4 @@ namespace jacdac {
     }
 }
 
-const accel = new jacdac.microbitAccelerometer();
-accel.start();
-
 // events.
