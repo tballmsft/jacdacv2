@@ -4,6 +4,7 @@ function startAll() {
     let buttonB = new jacdac.microbitButton("buttonB", Button.B);
     let buttonAB = new jacdac.microbitButton("buttonAB", Button.AB);
     let soundLevel = new jacdac.microbitSoundLevel();
+    accel.start();
     buttonA.start();
     buttonB.start();
     buttonAB.start();
