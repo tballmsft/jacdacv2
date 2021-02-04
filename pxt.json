@@ -8,7 +8,6 @@
         "jacdac": "github:microsoft/pxt-jacdac#v0.2.23"
     },
     "files": [
-        "main.blocks",
         "main.ts",
         "README.md",
         "microbitAccel.ts",
