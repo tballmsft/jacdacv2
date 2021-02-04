@@ -93,13 +93,16 @@ namespace microbit {
     }
 
     export class Accelerometer extends jacdac.SensorHost {
+        private lastEvent: number = -1;
         constructor() {
             super("microbitAccel", SRV_ACCELEROMETER);
             control.onEvent(EventBusSource.MICROBIT_ID_ACCELEROMETER, EventBusValue.MICROBIT_EVT_ANY, 
             () => {    
                 let e = mapEventValue(control.eventValue());
-                if (e != -1)
+                if (e != -1 && e != this.lastEvent) {
+                    this.lastEvent = e;
                     this.sendEvent(e);
+                }
             })
         }
 

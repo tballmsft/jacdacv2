@@ -1,5 +1,4 @@
 // TODO:
-// - screen
 // - play sound
 // - cap touch (logo)
 // - temperature
@@ -13,12 +12,14 @@ function startAll() {
     let buttonAB = new microbit.MButton("buttonAB", Button.AB);
     let soundLevel = new microbit.SoundLevel();
     let lightLevel = new microbit.LightLevel();
+    let screen = new microbit.Screen();
     accel.start();
     buttonA.start();
     buttonB.start();
     buttonAB.start();
     soundLevel.start();
     lightLevel.start();
+    screen.start();
 }
 
 startAll();

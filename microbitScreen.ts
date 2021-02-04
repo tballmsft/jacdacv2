@@ -1,7 +1,7 @@
 namespace microbit {
     // Service: LED Matrix
-    export const SRV_LEDMATRIX = 0x110d154b
-    export const enum LEDMatrixReg {
+    const SRV_LEDMATRIX = 0x110d154b
+    const enum LEDMatrixReg {
         /**
          * Read-write bytes. The state of the screen where pixel on/off state is
          * stored as a bit, column by column. The column should be byte aligned.
@@ -38,6 +38,39 @@ namespace microbit {
     }
 
     export class Screen extends jacdac.Host {
-
+        constructor() {
+            super("microbitScreen", SRV_LEDMATRIX)
+        }
+        
+        handlePacket(packet: jacdac.JDPacket) {
+            if (packet.reg_identifier == LEDMatrixReg.Leds) {
+                if (packet.is_reg_set) {
+                    let x = 0, y = 0;
+                    for (let i=0; i<25; i++) {
+                        let byte = i >> 3;
+                        let bit = 1 << (i - (byte << 3)); 
+                        if (packet.data[byte] & bit) 
+                            led.plot(x,y);
+                        else led.unplot(x,y);
+                        x++; if (x ==5) { x=0; y++; }
+                    }
+                } else {
+                    let x = 0, y = 0;
+                    let buf = Buffer.create(4);
+                    for (let i=0; i<25; i++) {
+                        if (led.point(x, y)) {
+                            let byte = i >> 3;
+                            let bit = 1 << (i - (byte << 3)); 
+                            packet.data[byte] |= bit; 
+                        }
+                        x++; if (x == 5) { x=0; y++; }
+                    }
+                    this.handleRegBuffer(packet, packet.reg_identifier, buf);
+                }
+            } else if (packet.reg_identifier == LEDMatrixReg.Rows || 
+                       packet.reg_identifier == LEDMatrixReg.Columns) {
+                this.handleRegValue(packet, packet.reg_identifier, "u16", 5);
+            }
+        }
     }
 }

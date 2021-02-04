@@ -34,7 +34,7 @@ namespace microbit {
         LongClick = 0x81,
     }
 
-    export class MButton extends jacdac.Host {
+    export class MButton extends jacdac.SensorHost {
         constructor(dev: string, private button: Button) {
             super(dev, SRV_BUTTON);
             control.onEvent(button, EventBusValue.MICROBIT_EVT_ANY, 
@@ -46,8 +46,9 @@ namespace microbit {
                     this.sendEvent(ButtonEvent.Up);
             })
         }
-        handlePacket(packet: jacdac.JDPacket) {
-            this.handleRegBool(packet, ButtonReg.Pressed, input.buttonIsPressed(this.button));
+        public serializeState(): Buffer {
+            let pressed = input.buttonIsPressed(this.button);
+            return jacdac.jdpack("u8", [ pressed ? 1 : 0]);
         }
     }
 }
