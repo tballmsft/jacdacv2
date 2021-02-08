@@ -14,7 +14,10 @@
         "microbitButtons.ts",
         "microbitSound.ts",
         "microbitScreen.ts",
-        "microbitLightLevel.ts"
+        "microbitLightLevel.ts",
+        "microbitPlay.ts",
+        "microbitTemperature.ts",
+        "microbitCompass.ts"
     ],
     "testFiles": [
         "test.ts"

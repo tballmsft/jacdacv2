@@ -110,7 +110,7 @@ namespace microbit {
             let ax = input.acceleration(Dimension.X);
             let ay = input.acceleration(Dimension.Y);
             let az = input.acceleration(Dimension.Z);
-            return jacdac.jdpack("u16 u16 u16", [ax, ay, az]);
+            return jacdac.jdpack("i16 i16 i16", [ax, ay, az]);
         }
     }
 }

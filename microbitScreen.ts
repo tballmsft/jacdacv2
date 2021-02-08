@@ -61,7 +61,7 @@ namespace microbit {
                         if (led.point(x, y)) {
                             let byte = Math.floor(i/5);
                             let bit = 1 << (i - (byte*5)); 
-                            packet.data[byte] |= bit; 
+                            buf[byte] |= bit; 
                         }
                         x++; if (x == 5) { x=0; y++; }
                     }
